@@ -24,8 +24,8 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
                 {
                     throw new StudentException("Phone number needs to be 10 degits");
                 }
-                SqlCommand cmd = new SqlCommand($"INSERT INTO tblStudent Values('{stdNumber_}','{stdName_}','{stdSurname_}','{IMAGES}','{Dob_}','{gender_}','{phone_}','{address_}','{modul_}')",conn);
-                 
+                SqlCommand cmd = new SqlCommand($"INSERT INTO tblStudent Values('{stdNumber_}','{stdName_}','{stdSurname_}',@img,'{Dob_}','{gender_}','{phone_}','{address_}','{modul_}')",conn);
+                cmd.Parameters.Add(new SqlParameter("@img",IMAGES));
                   cmd.ExecuteNonQuery();
 
                 conn.Close();

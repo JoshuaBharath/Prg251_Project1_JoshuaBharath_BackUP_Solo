@@ -33,7 +33,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
                 dataGridView1.DataSource = bs;
                 dataGridView1.Columns["Username"].Visible = false;
                 dataGridView1.Columns["Password"].Visible = false;
-                dataGridView1.Columns["Images"].Visible=false;
+                //dataGridView1.Columns["Images"].Visible=false;
                
 
             }
