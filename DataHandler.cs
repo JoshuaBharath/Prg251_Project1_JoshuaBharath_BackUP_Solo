@@ -15,16 +15,42 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
     {
         SqlConnection conn = new SqlConnection("Server=.;Initial Catalog=StudentDB;Integrated Security=SSPI");
         
-        public void Create(int stdNumber_,string stdName_,string stdSurname_,string Dob_,string gender_,string phone_ ,string address_,int modul_,byte [] IMAGES)
+            public List<Module> ShowItemsInModelTbl()
+        {
+            List<Module> allItems = new List<Module>();
+            
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select * from Module",conn);
+                SqlDataReader read;
+                read = cmd.ExecuteReader();
+                while (read.Read())
+                {
+                    Module m = new Module(Convert.ToInt32(read[0]), read[1].ToString());
+                    allItems.Add(m);
+                }
+                conn.Close();
+                return allItems;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return allItems;
+            }
+        }
+        public void Create(string stdName_,string stdSurname_,string Dob_,string gender_,string phone_ ,string address_,int modul_,byte [] IMAGES,string Username_,string Pasword_)
         {
             try
             {
+                FileHandler fh = new FileHandler();
+                fh.StudentCredentials(Username_,Pasword_);
                 conn.Open();
                 if (phone_.Length!=10)
                 {
                     throw new StudentException("Phone number needs to be 10 degits");
                 }
-                SqlCommand cmd = new SqlCommand($"INSERT INTO tblStudent Values('{stdNumber_}','{stdName_}','{stdSurname_}',@img,'{Dob_}','{gender_}','{phone_}','{address_}','{modul_}')",conn);
+                SqlCommand cmd = new SqlCommand($"INSERT INTO tblStudent Values('{stdName_}','{stdSurname_}',@img,'{Dob_}','{gender_}','{phone_}','{address_}','{modul_}')",conn);
                 cmd.Parameters.Add(new SqlParameter("@img",IMAGES));
                   cmd.ExecuteNonQuery();
 
@@ -73,7 +99,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"Select * From tblStudent where stdNumber='{num}'", conn);
+                SqlCommand cmd = new SqlCommand($"Select * From tblStudent where ModuleCode_FK='{num}'", conn);
 
 
                 SqlDataReader read;
@@ -90,7 +116,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
                 conn.Close();
                 if (stdList.Count() == 0)
                 {
-                    throw new StudentException("item did not exists");
+                    throw new StudentException("No one has Used this this model code as of yet please search for another");
                 }
                 return stdList;
             }

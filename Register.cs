@@ -21,20 +21,12 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
 
         private void txtStdNumber_Enter(object sender, EventArgs e)
         {
-            if (txtStdNumber.Text=="Student Number")
-            {
-                txtStdNumber.Text = "";
-                txtStdNumber.ForeColor = Color.MediumPurple;
-            }
+           
         }
 
         private void txtStdNumber_Leave(object sender, EventArgs e)
         {
-            if (txtStdNumber.Text == "")
-            {
-                txtStdNumber.Text = "Student Number";
-                txtStdNumber.ForeColor = Color.Purple;
-            }
+            
         }
 
         private void txtStdName_Enter(object sender, EventArgs e)
@@ -129,20 +121,12 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
 
         private void txtModuleCodes_Enter(object sender, EventArgs e)
         {
-            if (txtModuleCodes.Text == "Module Codes")
-            {
-                txtModuleCodes.Text = "";
-                txtModuleCodes.ForeColor = Color.MediumPurple;
-            }
+            
         }
 
         private void txtModuleCodes_Leave(object sender, EventArgs e)
         {
-            if (txtModuleCodes.Text == "")
-            {
-                txtModuleCodes.Text = "Module Codes";
-                txtModuleCodes.ForeColor = Color.Gray;
-            }
+            
         }
 
         private void txtStdSurname_TextChanged(object sender, EventArgs e)
@@ -178,6 +162,15 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             
             cbStdGender.Items.Add("Male");
             cbStdGender.Items.Add("Female");
+
+            DataHandler dh = new DataHandler();
+            foreach (var item in dh.ShowItemsInModelTbl())
+            {
+                ListViewItem i = new ListViewItem(item.ModuleId.ToString());
+                i.SubItems.Add(item.ModuleName);
+                listView1.Items.Add(i);
+                comboBox1.Items.Add(item.ModuleId);
+            }
         }
 
         private void txtUsername_Enter(object sender, EventArgs e)
@@ -257,10 +250,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
                 {
                     throw new StudentException("number needs to be 10 digits with no spaces");
                 }
-                dh.Create(Convert.ToInt32(txtStdNumber.Text), txtStdName.Text, txtStdSurname.Text, txtstdDOB.Text, cbStdGender.Text, txtStdPhone.Text, txtStdAddress.Text, Convert.ToInt32(txtModuleCodes.Text),img);
-                FileHandler fh = new FileHandler();
-                fh.StudentCredentials(txtUsername.Text,txtStdPassword.Text);
-                MessageBox.Show("record was saved successfully");
+                dh.Create(txtStdName.Text, txtStdSurname.Text, txtstdDOB.Text, cbStdGender.Text, txtStdPhone.Text, txtStdAddress.Text, Convert.ToInt32(comboBox1.Text),img, txtUsername.Text, txtStdPassword.Text);
                 this.Hide();
                 Login l = new Login();
                 l.Show();
@@ -300,6 +290,34 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
         private void txtstdDOB_Enter_1(object sender, EventArgs e)
         {
            
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            comboBox1.Text=listView1.SelectedItems[0].SubItems[0].Text;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_Enter(object sender, EventArgs e)
+        {
+            if (comboBox1.Text=="Module Code")
+            {
+                comboBox1.Text = "";
+                comboBox1.ForeColor = Color.MediumPurple;
+            }
+        }
+
+        private void comboBox1_Leave(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "")
+            {
+                comboBox1.Text = "Module Code";
+                comboBox1.ForeColor = Color.MediumPurple;
+            }
         }
     }
 }

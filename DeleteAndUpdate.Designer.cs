@@ -76,14 +76,14 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             // 
             // stdNumdelete
             // 
-            this.stdNumdelete.Location = new System.Drawing.Point(752, 216);
+            this.stdNumdelete.Location = new System.Drawing.Point(742, 128);
             this.stdNumdelete.Name = "stdNumdelete";
             this.stdNumdelete.Size = new System.Drawing.Size(100, 22);
             this.stdNumdelete.TabIndex = 2;
             // 
             // stdnum
             // 
-            this.stdnum.Location = new System.Drawing.Point(171, 237);
+            this.stdnum.Location = new System.Drawing.Point(179, 141);
             this.stdnum.Name = "stdnum";
             this.stdnum.Size = new System.Drawing.Size(100, 22);
             this.stdnum.TabIndex = 3;
@@ -95,7 +95,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(711, 179);
+            this.label4.Location = new System.Drawing.Point(701, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 19);
             this.label4.TabIndex = 4;
@@ -108,11 +108,11 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(127, 193);
+            this.label5.Location = new System.Drawing.Point(135, 97);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(196, 19);
+            this.label5.Size = new System.Drawing.Size(174, 19);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Identify user by student name";
+            this.label5.Text = "Identify user by student ID";
             // 
             // button1
             // 
@@ -158,7 +158,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(76, 106);
+            this.label6.Location = new System.Drawing.Point(77, 188);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(315, 19);
             this.label6.TabIndex = 29;
@@ -166,7 +166,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
             // 
             // stdMod
             // 
-            this.stdMod.Location = new System.Drawing.Point(178, 146);
+            this.stdMod.Location = new System.Drawing.Point(179, 228);
             this.stdMod.Name = "stdMod";
             this.stdMod.Size = new System.Drawing.Size(100, 22);
             this.stdMod.TabIndex = 28;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
 {
-    class Students
+    class Students:IComparable<Students>
     {
         int StudentNumber;
         string name;
@@ -64,6 +64,11 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
         public string Password { get => password; set => password = value; }
         public int StudentNumber1 { get => StudentNumber; set => StudentNumber = value; }
         public byte [] Images { get => images; set => images = value; }
+
+        public int CompareTo(Students other)
+        {
+            return this.name.CompareTo(other.name);
+        }
 
         public override string ToString()
         {

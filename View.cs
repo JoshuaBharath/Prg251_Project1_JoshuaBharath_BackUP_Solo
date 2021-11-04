@@ -34,7 +34,7 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
                 dataGridView1.Columns["Username"].Visible = false;
                 dataGridView1.Columns["Password"].Visible = false;
                 //dataGridView1.Columns["Images"].Visible=false;
-               
+                myList.Sort();
 
             }
             catch (Exception ex)
@@ -60,6 +60,25 @@ namespace Prg251_Project1_JoshuaBharath_BackUP_Solo
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                var imgRow = (Byte[])(row.Cells["images"].Value);
+                var stream = new MemoryStream(imgRow);
+                pictureBox1.Image = Image.FromStream(stream);
+                stdnum.Text = row.Cells["StudentNumber1"].Value.ToString();
+                stdName.Text = row.Cells["name"].Value.ToString();
+                stdSurname.Text = row.Cells["surname"].Value.ToString();
+                stdGender.Text = row.Cells["gender"].Value.ToString();
+                stdPhone.Text = row.Cells["phoneNumber"].Value.ToString();
+                stdAddress.Text = row.Cells["Address1"].Value.ToString();
+                stdModelNumber.Text = row.Cells["moduleCode"].Value.ToString();
+                stdDob.Text = row.Cells["Dob"].Value.ToString();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
